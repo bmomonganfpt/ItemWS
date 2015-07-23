@@ -1,20 +1,27 @@
 package vn.com.fpt.entities;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+@Entity
 public class Item {
 
+	@Id
+	@GeneratedValue
 	private Long id;
 	private String itemName;
-	private Account account;
-	private double itemAccount;
+	private String itemDesc;
+	private Double itemInitPrice;
 
 	public Long getId() {
 		return id;
 	}
-
+	
 	public void setId(Long id) {
 		this.id = id;
 	}
-
+	
 	public String getItemName() {
 		return itemName;
 	}
@@ -22,21 +29,20 @@ public class Item {
 	public void setItemName(String itemName) {
 		this.itemName = itemName;
 	}
-
-	public Account getAccount() {
-		return account;
+	
+	public String getItemDesc() {
+		return itemDesc;
 	}
-
-	public void setAccount(Account account) {
-		this.account = account;
+	
+	public void setItemDesc(String itemDesc) {
+		this.itemDesc = itemDesc;
 	}
-
-	public double getItemAccount() {
-		return itemAccount;
+	
+	public Double getItemInitPrice() {
+		return itemInitPrice;
 	}
-
-	public void setItemAccount(double itemAccount) {
-		this.itemAccount = itemAccount;
+	
+	public void setItemInitPrice(Double itemInitPrice) {
+		this.itemInitPrice = itemInitPrice;
 	}
-
 }
