@@ -16,7 +16,7 @@ import vn.com.fpt.services.item.ItemService;
 
 @Controller
 public class ItemController {
-	
+
 	@Autowired
 	ItemService itemService;
 
@@ -34,15 +34,16 @@ public class ItemController {
 		return list;
 	}
 
-	@RequestMapping(value = "/add", method = RequestMethod.POST)
-	public String add(@RequestParam("itemName") String itemName, @RequestParam("itemDesc") String itemDesc, @RequestParam("itemInitPrice") String itemInitPrice) {
+	@RequestMapping(value = "/item", method = RequestMethod.POST)
+	public @ResponseBody Item add(@RequestParam("itemName") String itemName, @RequestParam("itemDesc") String itemDesc,
+			@RequestParam("itemInitPrice") String itemInitPrice) {
+		
 		Item item = new Item();
 		item.setItemName(itemName);
 		item.setItemDesc(itemDesc);
 		item.setItemInitPrice(Double.parseDouble(itemInitPrice));
-		if (itemService.persist(item)) {
-			return "redirect:http://localhost:7662/FrontEnd/Item";
-		}
-		return "redirect:http://localhost:7662/FrontEnd/failed";		
+		itemService.persist(item);
+		System.out.println(itemName);
+		return item;
 	}
 }
