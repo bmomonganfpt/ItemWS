@@ -10,9 +10,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import vn.com.fpt.entities.Account;
 import vn.com.fpt.entities.Item;
-import vn.com.fpt.services.item.ItemService;
+import vn.com.fpt.services.ItemService;
 
 @Controller
 public class ItemController {
@@ -21,23 +20,25 @@ public class ItemController {
 	ItemService itemService;
 
 	@RequestMapping(value = "/all", method = RequestMethod.POST)
-	public @ResponseBody List<Account> all() {
-		List<Account> list = new ArrayList<Account>();
-		Account a1 = new Account();
-		Account a2 = new Account();
-		a1.setId(1L);
-		a1.setEmail("dummy1@email.com");
-		a2.setId(2L);
-		a2.setEmail("dummy2@email.com");
-		list.add(a1);
-		list.add(a2);
+	public @ResponseBody List<Item> all() {
+		List<Item> list = new ArrayList<Item>();
+		Item i1 = new Item();
+		Item i2 = new Item();
+		i1.setItemName("brian");
+		i1.setItemDesc("hey");
+		i1.setItemInitPrice(null);
+		i2.setItemName("diane");
+		i2.setItemDesc("you");
+		i2.setItemInitPrice(null);
+		list.add(i1);
+		list.add(i2);
 		return list;
 	}
 
 	@RequestMapping(value = "/item", method = RequestMethod.POST)
 	public @ResponseBody Item add(@RequestParam("itemName") String itemName, @RequestParam("itemDesc") String itemDesc,
 			@RequestParam("itemInitPrice") String itemInitPrice) {
-		
+
 		Item item = new Item();
 		item.setItemName(itemName);
 		item.setItemDesc(itemDesc);

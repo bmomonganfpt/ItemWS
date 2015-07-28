@@ -39,15 +39,15 @@
 			<value>
 				hibernate.dialect=org.hibernate.dialect.Oracle10gDialect
 				hibernate.show_sql=true
-				hibernate.hbm2ddl.auto=create-drop
+				hibernate.hbm2ddl.auto=update
 			</value>
 		</property>
 	</bean>
 
 	<tx:annotation-driven />
 
-	<bean id="accountService" class="vn.com.fpt.services.account.AccountServiceImpl"></bean>
-	<bean id="accountRepository" class="vn.com.fpt.repositories.account.AccountRepositoryImpl"></bean>
+	<bean id="itemService" class="vn.com.fpt.services.ItemService"></bean>
+	<bean id="itemRepository" class="vn.com.fpt.repository.ItemRepository"></bean>
 
 	<bean id="transactionManager"
 		class="org.springframework.orm.hibernate4.HibernateTransactionManager">
